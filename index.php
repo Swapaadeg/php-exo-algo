@@ -124,7 +124,7 @@
     <?php
     $fighters=['Zelda','Samus','Bowser','Peach','Lucina'] ;
     foreach($fighters as $fighter) {
-        echo strlen(($fighter) == 6) ? '$fighter' : ' ';
+        echo strlen($fighter) == 6 ? $fighter ." " : ' ';
     }
 
     ?>
