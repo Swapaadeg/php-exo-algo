@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exo PHP</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Exo PHP</h1>
@@ -59,9 +70,9 @@
     <h2>Exo 6</h2>
     <?php
     function test($number) {
-      if($number % 2 === 0 ){
-        return $number . " ";
-    }
+        if($number % 2 === 0 ){
+            return $number . " ";
+        }
     }
     for($number = 1; $number <= 20 ; $number ++){
         echo test($number);
@@ -126,7 +137,33 @@
     foreach($fighters as $fighter) {
         echo strlen($fighter) == 6 ? $fighter ." " : ' ';
     }
-
     ?>
+
+    <h2>Exo 13</h2>
+    <?php
+    $entier = [13, 27, 198, 2, 47, 158, 72, 125, 4, 27];
+    echo min($entier);
+    ?>
+
+    <h2>Exo 14</h2>
+    <?php
+    $entiers = [13, 27, 198, 2, 47, 158, 72, 125, 4, 27];
+    asort($entiers);
+    foreach($entiers as $entier) {
+       echo ($entier) . " ";
+    }
+    ?>
+
+    <h2>Exo 15</h2>
+    <table>
+        <?php
+        for ($i = 1; $i <= 9; $i++) {
+            echo "<tr>";
+            for ($j = 1; $j <= 9; $j++) {
+                echo "<td>" . ($i * $j) . "</td>";
+            }
+        } echo "</tr>";
+        ?>
+    </table>
 </body>
 </html>
