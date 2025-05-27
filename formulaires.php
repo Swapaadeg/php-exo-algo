@@ -34,7 +34,9 @@ ob_start()
         <input type="text" name = "animal">
         <button>valider</button>
     <?php
-    echo '"Votre animal choisi est ' . htmlspecialchars($_GET["animal"]);
+    if (isset($_GET['animal'])) {
+        echo '<p>Votre animal choisi est : ' . htmlspecialchars($_GET['animal']) . '</p>';
+    }
     ?>
     </form>
 
@@ -42,19 +44,22 @@ ob_start()
     <h2>3. Requête POST</h2>
 
     <form action="formulaires.php" method = "post">
-        <input type="text" name = "name" placeholder = "écrire votre pseudo">
+        <input type="text" name = "name" placeholder = "Ecrire votre pseudo">
         <input type="color" name="color">
         <button>valider</button>
     </form>
     <style>
-        <?php
-        echo "body { background-color: ".$_POST["color"].";}";
-        ?>
+    <?php
+    if (isset($_POST['color'])) {
+        echo '<style>body { background-color: ' . htmlspecialchars($_POST['color']) . '; }</style>';
+    }
+    ?>
     </style>
     <?php
-    echo '"Bonjour ' . htmlspecialchars($_POST["name"]) . ' "';
+    if (isset($_POST['name'])) {
+        echo '<p>Bonjour ' . htmlspecialchars($_POST['name']) . ' !</p>';
+    }
     ?>
-    </form>
 
     <!-- EXO 4  -->
     <h2>4. Dés numériques</h2>
@@ -299,7 +304,7 @@ ob_start()
     $message="";
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $proposition = (int)($_POST['nombre'] ?? null);
+        $proposition = ($_POST['nombre']);
         if($proposition < $_SESSION['mystere']) {
             $message = "C'est plus!";
         } elseif ($proposition > $_SESSION['mystere']) {
@@ -312,5 +317,16 @@ ob_start()
     <?php if ($message): ?>
         <p><?= htmlspecialchars($message) ?></p>
     <?php endif; ?>
+
+    <!-- EXO 10 -->
+    <h2>10.Upload d'image</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="image">Choisissez une image :</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+    <button type="submit">Envoyer</button>
+    </form>
+
+    <?php
+    ?>
 </body>
 </html>
