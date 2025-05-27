@@ -292,7 +292,6 @@ ob_start()
         <button type="submit">Valider</button>
     </form>
     <?php
-    session_start();
     if(!isset($_SESSION['mystere'])) {
         $_SESSION['mystere'] = rand(0, 1000);
     }
@@ -310,5 +309,8 @@ ob_start()
         }
     }
     ?>
+    <?php if ($message): ?>
+        <p><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
 </body>
 </html>
